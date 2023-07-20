@@ -1,0 +1,71 @@
+class Solution {
+public:
+    double myPow(double x, int n) {
+        return pow(x,n) ;
+        
+    }
+};
+
+
+
+
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+                int ele=arr[0];
+        int count=0;
+        for(int i=0;i<arr.size();i++){
+            if(count==0)ele=arr[i];
+            count+=(ele==arr[i])?1:-1;
+        }
+        return ele;
+    }
+};
+    
+
+class Solution {
+public:
+    vector<int> majorityElement(vector<int>& ele) {
+         int cnt1=0,cnt2=0,n=arr.size(),elem1,elem2;
+    vector<int> ans;
+    for(int i=0;i<n;i++)
+    {
+        if(cnt1==0 && arr[i]!=elem2)
+        {
+            cnt1=1;
+            elem1=arr[i];
+        }
+        else if(cnt2==0 && arr[i]!=elem1)
+        {
+            cnt2=1;
+            elem2=arr[i];
+        }
+        else if(arr[i]==elem1)
+        {
+            cnt1++;
+        }
+        else if(arr[i]==elem2)
+        {
+            cnt2++;
+        }
+        else{
+            cnt1--;
+            cnt2--;
+        }
+    }
+    cnt1=0,cnt2=0;
+    for(int i=0;i<n;i++)
+    {
+        if(arr[i]==elem1)
+            cnt1++;
+        else if(arr[i]==elem2)
+        {
+            cnt2++;
+        }
+    }
+    if(cnt1>n/3)
+        ans.push_back(elem1);
+    if(cnt2>n/3)
+        ans.push_back(elem2);
+    return ans;
+}    
