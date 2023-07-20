@@ -43,3 +43,151 @@ public:
         return head;
     }
 };
+
+
+
+
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+    ListNode *slow = head, *fast = head, *prev, *temp;
+        while (fast && fast->next)
+            slow = slow->next, fast = fast->next->next;
+        prev = slow, slow = slow->next, prev->next = NULL;
+        while (slow)
+            temp = slow->next, slow->next = prev, prev = slow, slow = temp;
+        fast = head, slow = prev;
+        while (slow)
+            if (fast->val != slow->val) return false;
+            else fast = fast->next, slow = slow->next;
+        return true;
+    }
+};
+
+
+
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+        int n =matrix.size();
+        for(int i =0;i<n;i++){
+            for(int j =0;j<i;j++){
+                swap(matrix[i][j],matrix[j][i]);
+            }
+        }
+        for(int i =0;i<n;i++){
+     reverse (matrix[i].begin(),matrix[i].end());
+        }
+        
+    }
+};
+
+
+
+
+
+
+
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        for(int j=0,i=m;j<n;j++ ){
+            nums1[i]=nums2[j];
+            i++;
+            
+        }
+        sort(nums1.begin(),nums1.end());
+        
+    }
+};
+
+
+
+class Solution {
+public:
+    double myPow(double x, int n) {
+        return pow(x,n) ;
+        
+    }
+};
+
+
+
+
+
+class Solution {
+public:
+    vector<int> twoSum( vector<int>& nums, int target) {
+        int n =nums.size();
+     for(  int i =0;i<n-1;i++){
+       for(  int j =i+1;j<n;j++){
+           if(nums[i]+nums[j]==target){
+               return {i,j};
+           }
+       }
+     }
+         return {};
+     }
+        
+    
+};
+
+
+
+
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+             int n = nums.size();
+        if(n == 0){
+            return 0;
+        }
+        sort(nums.begin(), nums.end());
+        int currentConsecutiveSequence = 1;
+        int longestConsecutiveSequence = 0;
+        for(int i=1; i<n; i++){
+            if(nums[i] != nums[i-1]){
+                if(nums[i] == nums[i-1] + 1){
+                    currentConsecutiveSequence++;
+                }
+                else{
+                    longestConsecutiveSequence = max(longestConsecutiveSequence, currentConsecutiveSequence);
+                    currentConsecutiveSequence = 1;
+                }
+            }
+        }
+        return max(longestConsecutiveSequence, currentConsecutiveSequence);
+    }
+};
+
+
+
+
+
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+                ListNode *dummy = new ListNode(); 
+        ListNode *temp = dummy; 
+        int carry = 0;
+        while( (l1 != NULL || l2 != NULL) || carry) {
+            int sum = 0; 
+            if(l1 != NULL) {
+                sum += l1->val; 
+                l1 = l1 -> next; 
+            }
+            
+            if(l2 != NULL) {
+                sum += l2 -> val; 
+                l2 = l2 -> next; 
+            }
+            
+            sum += carry; 
+            carry = sum / 10; 
+            ListNode *node = new ListNode(sum % 10); 
+            temp -> next = node; 
+            temp = temp -> next; 
+        }
+        return dummy -> next; 
+    }
+};
