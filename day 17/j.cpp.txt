@@ -1,0 +1,99 @@
+class Solution {
+    vector<int> ans;
+public:
+    void inorder(TreeNode* &root){
+    if(!root) return;
+        inorder(root->left);
+        ans.push_back(root->val);
+        inorder(root->right);
+    }
+    vector<int> inorderTraversal(TreeNode* root) {
+        inorder(root);
+        return ans;
+    }
+};
+
+
+
+
+
+
+class Solution {
+    vector<int> ans;
+public:
+    void preorder(TreeNode* &root){
+    if(!root) return;
+      
+        ans.push_back(root->val);
+         preorder(root->left);
+        preorder(root->right);
+    }
+    vector<int> preorderTraversal(TreeNode* root) {
+        preorder(root);
+        return ans;
+    }
+};
+
+
+
+
+
+
+
+class Solution {
+    vector<int> ans;
+public:
+    void postorder(TreeNode* &root){
+    if(!root) return;
+      
+        
+         postorder(root->left);
+        postorder(root->right);
+           ans.push_back(root->val);
+    }
+    vector<int> postorderTraversal(TreeNode* root) {
+        postorder(root);
+        return ans;
+    }
+};
+
+
+
+
+
+
+   vector<int> ans;
+public:
+    void inorder(TreeNode* &root){
+    if(!root) return;
+        inorder(root->left);
+        ans.push_back(root->val);
+        inorder(root->right);
+    }
+    vector<int> inorderTraversal(TreeNode* root) {
+        inorder(root);
+        return ans;
+    }
+};
+
+
+
+
+vector<int> leftView(Node *root)
+{
+    vector<int>res;
+    recursion(root,0,res);
+    return res;
+    public:
+    void recursion(Node *root,int level,vector<int>&res)
+    {
+        if(root==NULL)
+        return;
+        if(res.size=level)res.push-back(root->val); 
+        recursion(root->left,level+1,res);
+        recursion(root->right,level+1,res);
+        
+    }
+       
+   // Your code here
+};
